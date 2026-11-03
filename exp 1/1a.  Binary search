@@ -1,0 +1,50 @@
+
+# Linear Search and Binary Search
+
+a = list(map(int, input("Enter array elements: ").split()))
+key = int(input("Enter element to search: "))
+
+print("1. Linear Search")
+print("2. Binary Search")
+
+ch = int(input("Enter choice: "))
+
+if ch == 1:
+    found = False
+
+    for i in range(len(a)):
+        if a[i] == key:
+            print("Element found at position", i + 1)
+            found = True
+            break
+
+    if not found:
+        print("Element not found")
+
+elif ch == 2:
+    a.sort()
+    print("Sorted array:", a)
+
+    low = 0
+    high = len(a) - 1
+    found = False
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if a[mid] == key:
+            print("Element found at position", mid + 1)
+            found = True
+            break
+
+        elif a[mid] < key:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
+    if not found:
+        print("Element not found")
+
+else:
+    print("Invalid choice")
